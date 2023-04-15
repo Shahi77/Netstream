@@ -33,7 +33,7 @@ const NavBar = () => {
                     </IconButton>
                     {!isMobile && 'Search...'}
                     <div>
-                        {isAuthenticated ? (
+                        {!isAuthenticated ? (
                             <Button color='inherit' onClick={() => { }}>
                                 Login &nbsp;
                                 {/* space */}
@@ -41,8 +41,8 @@ const NavBar = () => {
                         ) : (
                             <Button
                                 color="inherit"
-                                Component={Link}
-                                to="/profile/:id"
+                                component={Link}
+                                to={`/profile/:id`}
                                 className={classes.linkButton}
                                 onclick={() => { }}
                             >
@@ -60,18 +60,18 @@ const NavBar = () => {
                 </Toolbar>
             </AppBar>
             <div>
-                <nav className={classes.Drawer}>
+                <nav className={classes.drawer}>
                     {isMobile ? (
                         <Drawer
                             variant="temporary"
                             anchor="right"
-                            open={MobileOpen}
+                            open={mobileOpen}
                             onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
                             className={classes.drawerBackground}
                             classes={{ paper: classes.drawerPaper }}
                             ModalProps={{ keepMounted: true }}
                         >
-                            <sidebar setMobileOpen={setMobileOpen} />
+                            <Sidebar setMobileOpen={setMobileOpen} />
                         </Drawer>
                     ) : (
                         <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent" open>

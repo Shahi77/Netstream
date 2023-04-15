@@ -1,11 +1,10 @@
 import { makeStyles } from "@mui/styles";
 
-
 export default makeStyles((theme) => ({
     imageLink: {
         display: 'flex',
-        justifyContent: 'cenetr',
-        padding: '10 % 0',
+        justifyContent: 'center',
+        padding: '10% 0',
     },
     image: {
         width: '70%',
@@ -15,7 +14,7 @@ export default makeStyles((theme) => ({
         textDecoration: 'none',
     },
     genreImages: {
-        filter: theme.palette.mode = 'dark' ? 'dark' : 'invert(1)',
+        filter: theme.palette.mode === 'dark' ? 'dark' : 'invert(1)',
     }
 
 

@@ -3,7 +3,7 @@ import { Divider, List, ListItem, ListItemText, ListSubheader } from '@mui/mater
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 
-import usestyles from './styles';
+import useStyles from './styles';
 
 const categories = [
     { label: 'Popular', value: 'popular' },
@@ -23,13 +23,13 @@ const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48
 
 const Sidebar = ({ setMobileOpen }) => {
     const theme = useTheme();
-    const classes = usestyles();
+    const classes = useStyles();
     return (
         <>
             <Link to="/" className={classes.imageLink}>
                 <img
                     className={classes.image}
-                    src={theme.palatte.mode = 'light' ? redLogo : blueLogo}
+                    src={theme.palette.mode === 'light' ? redLogo : blueLogo}
                     alt="Netstream logo"
                 />
             </Link>
@@ -37,14 +37,14 @@ const Sidebar = ({ setMobileOpen }) => {
             <List>
                 <ListSubheader>Categories</ListSubheader>
                 {categories.map(({ label, value }) => (
-                    <link key={value} className={classes.links} to="/">
+                    <Link key={value} className={classes.links} to="/">
                         <ListItem onClick={() => { }} button>
                             {/* <ListItemIcon> */}
                             {/* <img src={redLogo} className={classes.genreImages} height={30} /> */}
                             {/* </ListItemIcon> */}
                             <ListItemText primary={label} />
                         </ListItem>
-                    </link>
+                    </Link>
                 )
                 )}
             </List>
@@ -52,14 +52,14 @@ const Sidebar = ({ setMobileOpen }) => {
             <List>
                 <ListSubheader>Genres</ListSubheader>
                 {demoCategories.map(({ label, value }) => (
-                    <link key={value} className={classes.links} to="/">
+                    <Link key={value} className={classes.links} to="/">
                         <ListItem onClick={() => { }} button>
                             {/* <ListItemIcon> */}
                             {/* <img src={redLogo} className={classes.genreImages} height={30} /> */}
                             {/* </ListItemIcon> */}
                             <ListItemText primary={label} />
                         </ListItem>
-                    </link>
+                    </Link>
                 )
                 )}
             </List>
@@ -69,3 +69,5 @@ const Sidebar = ({ setMobileOpen }) => {
 }
 
 export default Sidebar
+
+
