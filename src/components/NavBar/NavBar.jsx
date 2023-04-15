@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
-import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
+import { Menu, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
+
+import { Sidebar } from '..';
 import useStyles from './styles';
 
 const NavBar = () => {
+    const [MobileOpen, setMobileOpen] = useState(false);
     const classes = useStyles();
     const isMobile = useMediaQuery('(max-width:600px)');
     const theme = useTheme();
@@ -19,7 +22,7 @@ const NavBar = () => {
                             color="inherit"
                             edge="start"
                             style={{ outline: 'none' }}
-                            onclick={() => { }}
+                            onclick={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
                             className={classes.menuButton}
                         >
                             <Menu />
@@ -56,6 +59,30 @@ const NavBar = () => {
                     {isMobile && 'Search...'}
                 </Toolbar>
             </AppBar>
+            <div>
+                <nav className={classes.Drawer}>
+                    {isMobile ? (
+                        <Drawer
+                            variant="temporary"
+                            anchor="right"
+                            open={MobileOpen}
+                            onClose={() => setMobileOpen((prevMobileOpen) => !prevMobileOpen)}
+                            className={classes.drawerBackground}
+                            classes={{ paper: classes.drawerPaper }}
+                            ModalProps={{ keepMounted: true }}
+                        >
+                            <sidebar setMobileOpen={setMobileOpen} />
+                        </Drawer>
+                    ) : (
+                        <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent" open>
+                            <Sidebar setMobileOpen={setMobileOpen} />
+                        </Drawer>
+
+                    )}
+
+
+                </nav>
+            </div>
         </>
     )
 }
