@@ -5,11 +5,12 @@ import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/styles';
 
 import App from './components/App';
+import Store from './app/store';
 import { Provider } from 'react-redux';
 
 const theme = createTheme({});
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={Store}>
         <ThemeProvider theme={theme}>,
             <BrowserRouter>
                 <App />

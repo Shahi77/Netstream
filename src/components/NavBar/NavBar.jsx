@@ -8,7 +8,7 @@ import { Sidebar } from '..';
 import useStyles from './styles';
 
 const NavBar = () => {
-    const [MobileOpen, setMobileOpen] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const classes = useStyles();
     const isMobile = useMediaQuery('(max-width:600px)');
     const theme = useTheme();
